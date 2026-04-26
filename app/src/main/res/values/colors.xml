@@ -3,4 +3,6 @@
     <color name="primary_dark">#283593</color>
     <color name="cell_bg">#FAFAFA</color>
     <color name="cell_border">#E0E0E0</color>
+    <color name="cell_x_color">#B71C1C</color>
+    <color name="cell_o_color">#0D47A1</color>
 </resources>

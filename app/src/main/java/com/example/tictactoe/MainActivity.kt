@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var botSwitch: SwitchCompat
     private lateinit var boardButtons: List<Button>
     private var defaultCellTint: ColorStateList? = null
+    private var defaultCellTextColors: ColorStateList? = null
 
     private val board = Array(9) { "" }
     private var currentPlayer = "X"
@@ -52,6 +53,7 @@ class MainActivity : AppCompatActivity() {
             findViewById(R.id.btn8)
         )
         defaultCellTint = boardButtons.firstOrNull()?.backgroundTintList
+        defaultCellTextColors = boardButtons.firstOrNull()?.textColors
 
         boardButtons.forEachIndexed { index, button ->
             button.setOnClickListener { onCellClicked(index) }
@@ -118,7 +120,16 @@ class MainActivity : AppCompatActivity() {
 
     private fun applyMove(index: Int, player: String) {
         board[index] = player
-        boardButtons[index].text = player
+        val moveColor = if (player == "X") {
+            ContextCompat.getColor(this, R.color.cell_x_color)
+        } else {
+            ContextCompat.getColor(this, R.color.cell_o_color)
+        }
+
+        boardButtons[index].apply {
+            text = player
+            setTextColor(moveColor)
+        }
     }
 
     private fun finishIfNeeded(player: String): Boolean {
@@ -159,6 +170,7 @@ class MainActivity : AppCompatActivity() {
         boardButtons.forEach { button ->
             button.text = ""
             button.backgroundTintList = defaultCellTint
+            defaultCellTextColors?.let { button.setTextColor(it) }
         }
         currentPlayer = "X"
         gameFinished = false
