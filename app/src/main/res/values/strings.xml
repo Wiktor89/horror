@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Крестики-нолики</string>
+    <string name="game_title">Крестики-нолики</string>
+    <string name="reset_game">Новая игра</string>
+    <string name="play_with_bot">Играть против бота</string>
+    <string name="turn_of_player">Ход игрока %1$s</string>
+    <string name="player_won">Победил игрок %1$s</string>
+    <string name="bot_thinking">Ход бота (O)</string>
+    <string name="draw">Ничья!</string>
+</resources>
